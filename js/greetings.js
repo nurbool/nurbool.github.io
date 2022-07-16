@@ -26,6 +26,7 @@ function onLogout() {
 
 function printGreetings(username) {
     greeting.innerText = `Hello ${username}`;
+    loginForm.reset();
     greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
