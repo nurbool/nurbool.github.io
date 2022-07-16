@@ -46,7 +46,8 @@ input:focus { outline: none; }
         font-size: 1em;
         margin: .2em 0;
     }
-    #name_wrap h1 {
+    #greeting {
+        text-align: center;
         border-bottom: 2px solid white;
     }
 
