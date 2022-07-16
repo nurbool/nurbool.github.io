@@ -13,8 +13,8 @@ function getQuotes() {
     fetch(_url).then((res) => res.json()).then((json) => {
         const quotes = selectQuotes(json);
 
-        quote.innerText = quotes.text;
-        author.innerText = quotes.author;
+        quote.innerText = `"${quotes.text}"`;
+        author.innerHTML = ` <b>${quotes.author}</b>`;
     }).catch((err) => console.log(err));
 }
 

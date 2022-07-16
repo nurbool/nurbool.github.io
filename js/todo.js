@@ -1,5 +1,5 @@
 const todoForm = document.querySelector("#todo-form");
-const todoInput = todoForm.querySelector("input")
+const todoInput = todoForm.querySelector("input");
 const todoList = document.querySelector("#todo-list");
 
 const TODOS_KEY = "todos";
@@ -10,22 +10,23 @@ function setToDoList(todoObject) {
     todoLi.id = todoObject.id;
     const todoSpan = document.createElement("span");
     todoSpan.innerText = todoObject.text;
-    const todoButton = document.createElement("button");
-    todoButton.innerHTML = "X";
+    const todoButton = document.createElement("img");
+    todoButton.src = "/img/remove-svgrepo-com.svg";
+    todoButton.id = "btn-remove-todo";
     todoButton.addEventListener("click", deleteToDo);
-    todoLi.appendChild(todoSpan);
     todoLi.appendChild(todoButton);
+    todoLi.appendChild(todoSpan);
     todoList.appendChild(todoLi);
 }
 
 function saveToDos(savedToDos) {
-    localStorage.setItem(TODOS_KEY, JSON.stringify(savedToDos))
+    localStorage.setItem(TODOS_KEY, JSON.stringify(savedToDos));
 }
 
 function deleteToDo(event) {
     const todoId = event.target.parentElement.id;
     savedToDos = savedToDos.filter((element) => {
-        return element.id !== parseInt(todoId)
+        return element.id !== parseInt(todoId);
     });
     saveToDos(savedToDos);
     event.target.parentElement.remove();
@@ -40,7 +41,7 @@ function handleToDoSubmit(event) {
         const todoObject = {
             "id": new Date().getTime(),
             "text": newToDo
-        }
+        };
         setToDoList(todoObject);
 
         savedToDos.push(todoObject);
@@ -51,7 +52,6 @@ function handleToDoSubmit(event) {
 }
 
 todoForm.addEventListener("submit", handleToDoSubmit);
-
 
 savedToDos.forEach((todoObject) => {
     setToDoList(todoObject);
